@@ -311,6 +311,17 @@ window.addEventListener('load', function(){
             this.type = 'lucky';
         }
     }
+    class Hivewhale extends Enemy {
+        constructor(game){
+            super(game);
+            this.width = 400;
+            this.height = 227;
+            this.y = Math.random() * (this.game.height * 0.9 - this.height);
+            this.image = document.getElementById('hivewhale');
+            this.frameY =  0;
+            this.lives = 15;
+        }
+    }
 
     // clase layer, contiene las propiedades y funciones del escenario
     class Layer {
@@ -526,6 +537,7 @@ window.addEventListener('load', function(){
             const randomize = Math.random();
             if(randomize < 0.3) this.enemies.push(new Angler1(this));
             else if(randomize < 0.6) this.enemies.push(new Angler2(this));
+            else if(randomize < 0.8) this.enemies.push(new Hivewhale(this));
             else this.enemies.push(new Lucky(this));
         }
         // funcion de choque cuando son tocados
